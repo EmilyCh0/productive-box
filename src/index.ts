@@ -68,32 +68,22 @@ interface IRepo {
 
   /**
    * Next, generate diagram
-     const lines = oneDay.reduce((prev, cur) => {
-    const percent = cur.commits / sum * 100;
-    const line = [
-      `${cur.label}`.padEnd(10),
-      `${cur.commits.toString().padStart(5)} commits`.padEnd(14),
-      generateBarChart(percent, 21),
-      String(percent.toFixed(1)).padStart(5) + '%',
-    ];
-
-    return [...prev, line.join(' ')];
-  }, []);
    */
   const sum = morning + daytime + evening + night;
   if (!sum) return;
 
   const oneDay = [
-    { label: '🐣 Morning commits', commits: morning },
-    { label: '🌞 Daytime commits', commits: daytime },
-    { label: '🌆 Evening commits', commits: evening },
-    { label: '🌜 Night commits', commits: night },
+    { label: '🌞 Morning', commits: morning },
+    { label: '🌆 Daytime', commits: daytime },
+    { label: '🌃 Evening', commits: evening },
+    { label: '🌙 Night', commits: night },
   ];
 
   const lines = oneDay.reduce((prev, cur) => {
     const percent = cur.commits / sum * 100;
     const line = [
       `${cur.label}`.padEnd(10),
+      `${cur.commits.toString().padStart(5)} commits`.padEnd(14),
       generateBarChart(percent, 21),
       String(percent.toFixed(1)).padStart(5) + '%',
     ];
